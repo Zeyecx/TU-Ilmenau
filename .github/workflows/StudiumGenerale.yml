@@ -5,8 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  schedule:
-    - cron: "19 5 * * 3"
+
 
 jobs:
   build_latex:
@@ -27,3 +26,20 @@ jobs:
         with:
           name: PDF
           path: ./Studium_Generale//Utopie_und_Dystopie.pdf
+    
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: execute py script
+        run: |
+          python upload.py ./Studium_Generale//Utopie_und_Dystopie.pdf
+        env:
+          key: ${{ secrets.FTPPWD }}
+          user: ${{ secrets.FTPUSER }}
+          server: ${{ secrets.SERVER }}
+
+      - name: Clean GitHub
+        run: |
+          git clean -fX
