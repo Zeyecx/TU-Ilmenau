@@ -35,7 +35,7 @@ jobs:
       - name: execute py script
         run: |
           mv ./Studium_Generale/Utopie_und_Dystopie.pdf ./Utopie_und_Dystopie.pdf
-          python upload.py ./Studium_Generale/Utopie_und_Dystopie.pdf
+          python upload.py ./Utopie_und_Dystopie.pdf
         env:
           key: ${{ secrets.FTPPWD }}
           user: ${{ secrets.FTPUSER }}
