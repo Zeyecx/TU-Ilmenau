@@ -33,7 +33,8 @@ jobs:
 
       - name: execute py script
         run: |
-          python upload.py ./Soft_Skills/Soft_Skills.pdf
+          mv ./Soft_Skills/Soft_Skills.pdf ./Soft_Skills.pdf
+          python upload.py ./Soft_Skills.pdf
         env:
           key: ${{ secrets.FTPPWD }}
           user: ${{ secrets.FTPUSER }}
